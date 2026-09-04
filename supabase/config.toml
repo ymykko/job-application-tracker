@@ -1,0 +1,22 @@
+project_id = "job-application-tracker"
+
+[auth]
+enabled = true
+site_url = "https://ymykko.github.io/job-application-tracker/"
+additional_redirect_urls = ["https://ymykko.github.io/job-application-tracker/**"]
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = true
+max_frequency = "1m"
+otp_length = 8
+otp_expiry = 3600
+
+[auth.mfa]
+max_enrolled_factors = 10
+
+[auth.mfa.totp]
+enroll_enabled = true
+verify_enabled = true

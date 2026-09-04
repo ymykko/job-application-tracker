@@ -68,8 +68,8 @@ Email/password authentication works without additional code.
 
 1. In Supabase, open **Authentication → Providers → Email**.
 2. Keep Email enabled.
-3. For the simplest first setup, temporarily turn off **Confirm email**.
-4. Open the deployed site and create your owner account.
+3. Keep **Confirm email** enabled. The committed `supabase/config.toml` sets the deployed GitHub Pages URL as the allowed authentication return URL.
+4. Open the deployed site, create your owner account, and click the confirmation link sent to your email.
 5. After the account exists, disable **Allow new users to sign up** in the Supabase authentication settings if you want this to be strictly single-user.
 
 Even if sign-up remains enabled, RLS prevents one account from reading or changing another account's applications.
