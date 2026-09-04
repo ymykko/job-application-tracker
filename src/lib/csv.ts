@@ -76,15 +76,15 @@ export function mapCsvRow(row: CsvRow): ApplicationInput | null {
   return {
     company,
     position,
-    location: get(row, 'location', 'city', '地点', '岗位地点') || 'Not specified',
-    job_url: get(row, 'job_url', 'job link', 'apply_url', 'source_url', '岗位链接') || null,
+    location: get(row, 'location', 'city', '地点', '岗位地点', 'base地') || 'Not specified',
+    job_url: get(row, 'job_url', 'job link', 'apply_url', 'source_url', '岗位链接', '链接') || null,
     application_date: normalizeDate(
       get(row, 'application_date', 'application date', '投递日期', 'recommendation_date'),
     ),
     source: get(row, 'source', '来源') || 'Other',
     job_description: get(row, 'job_description', 'jd', 'job description', '职位描述'),
     requirements: get(row, 'requirements', 'key requirements', '要求'),
-    status: normalizeStatus(get(row, 'status', 'current status', '投递状态')),
+    status: normalizeStatus(get(row, 'status', 'current status', '投递状态', '投递进度')),
     priority: normalizePriority(get(row, 'priority', 'tier', '优先级')),
     application_type: normalizeType(
       get(row, 'application_type', 'employment_type', 'application type', '岗位类型'),

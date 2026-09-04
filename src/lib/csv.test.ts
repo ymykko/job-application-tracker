@@ -41,6 +41,26 @@ describe('CSV mapping', () => {
     ).toMatchObject({ company: '阿里巴巴', position: '用户运营', status: 'Applied' })
   })
 
+  it('recognises the headings used by the current Google Sheet', () => {
+    expect(
+      mapCsvRow({
+        公司名称: 'KLOOK',
+        岗位名称: 'Associate, Social Commerce',
+        base地: 'Hong Kong',
+        投递进度: '',
+        链接: 'https://example.com/job',
+        JD: 'Role description',
+      }),
+    ).toMatchObject({
+      company: 'KLOOK',
+      position: 'Associate, Social Commerce',
+      location: 'Hong Kong',
+      status: 'Saved',
+      job_url: 'https://example.com/job',
+      job_description: 'Role description',
+    })
+  })
+
   it('skips rows without both a company and position', () => {
     expect(mapCsvRow({ company: 'Only company' })).toBeNull()
   })
