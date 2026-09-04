@@ -52,7 +52,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       },
       signUp: async (email, password) => {
         if (!supabase) throw new Error('Supabase is not configured.')
-        const { data, error } = await supabase.auth.signUp({ email, password })
+        const emailRedirectTo = `${window.location.origin}${import.meta.env.BASE_URL}`
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: { emailRedirectTo },
+        })
         if (error) throw error
         return data.session
           ? 'Account created. You are signed in.'

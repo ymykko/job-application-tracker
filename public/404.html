@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Returning to Jobfolio…</title>
+  </head>
+  <body>
+    <p>Returning to Jobfolio…</p>
+    <script>
+      window.location.replace(
+        `${window.location.origin}/job-application-tracker/${window.location.search}${window.location.hash}`,
+      )
+    </script>
+  </body>
+</html>
